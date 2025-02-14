@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #ff1493;    /* розовый */
+  --secondary: #ffd700;  /* золотой */
+  --pink-light: #ff69b4; /* светло-розовый */
+  --dark: #000000;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+}
+
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.text-pink-light { color: var(--pink-light); }
+.text-dark { color: var(--dark); }
+
+.border-primary { border-color: var(--primary); }
+.border-secondary { border-color: var(--secondary); }
+
+.from-primary { --tw-gradient-from: var(--primary); }
+.to-secondary { --tw-gradient-to: var(--secondary); }
+
+.section-card {
+  @apply mt-24 p-8;
+  background: rgba(255, 20, 147, 0.05);
+  border: 1px solid rgba(255, 20, 147, 0.1);
+  border-radius: 1rem;
+}
+
+.card-hover {
+  @apply transition-transform duration-300;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+
+.loader-ring {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.updating {
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Instagram embed responsive fix */
+iframe {
+  border: 0;
+}
+
+/* Add smooth scrolling behavior to the whole document */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Add scroll padding to account for fixed header */
+html {
+  scroll-padding-top: 6rem; /* Adjust this value based on your navbar height */
+}
