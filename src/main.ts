@@ -28,6 +28,35 @@ async function initializeApp() {
         });
       }, 500);
     }
+
+    // Setup wallet copy functionality
+    const copyButton = document.getElementById('copy-wallet');
+    const walletAddress = document.getElementById('wallet-address');
+    const tooltip = document.getElementById('copy-tooltip');
+
+    if (copyButton && walletAddress && tooltip) {
+      copyButton.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(walletAddress.textContent?.trim() || '');
+          
+          // Show tooltip
+          tooltip.classList.add('opacity-100');
+          
+          // Hide tooltip after 2 seconds
+          setTimeout(() => {
+            tooltip.classList.remove('opacity-100');
+          }, 2000);
+          
+          // Add success animation to the button
+          copyButton.classList.add('text-secondary');
+          setTimeout(() => {
+            copyButton.classList.remove('text-secondary');
+          }, 1000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    }
   } catch (error) {
     console.error('Error initializing app:', error);
   }
